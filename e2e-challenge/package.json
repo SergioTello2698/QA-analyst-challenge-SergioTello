@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "cypress": "^15.0.0"
+  },
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run --browser chrome --headed",
+    "test": "npm run cypress:run"
+  }
+}
