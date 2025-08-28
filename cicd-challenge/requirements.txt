@@ -1,1 +1,87 @@
-Esto es solo una prueba para verificar el funcionamiento del push
+# CI/CD para mi proyecto de API de usuarios
+# He estado investigando sobre esto y creo que sería buena idea implementarlo
+
+## Lo que entiendo de CI/CD:
+# CI = Continuous Integration (integración continua)
+# CD = Continuous Deployment (despliegue continuo)
+# Básicamente es automatizar las pruebas y el despliegue
+
+## Mi propuesta para implementar CI:
+
+# 1. Configuración inicial
+# Voy a usar GitHub Actions porque es gratis y ya tengo el código en GitHub
+# Necesito crear un archivo .github/workflows/ci.yml
+# Usar Node.js 18 (creo que es la versión estable actual)
+
+# 2. Pasos que debería hacer automáticamente:
+
+# Primero: Descargar el código
+# Usar actions/checkout@v3 (vi esto en varios tutoriales)
+
+# Segundo: Instalar Node.js
+# Con actions/setup-node@v3 para tener el ambiente listo
+
+# Tercero: Instalar las dependencias
+# Ejecutar npm install para que tenga Jest y todo lo necesario
+# Tal vez usar cache para que sea más rápido? (no estoy seguro cómo)
+
+# Cuarto: Correr las pruebas
+# npm test - esto va a ejecutar las 9 pruebas que hice
+# Si alguna falla, que se detenga todo y no permita continuar
+
+# Quinto: (opcional) revisar el código
+# Podría agregar un linter como ESLint para mantener el código limpio
+# Aunque no sé si es necesario para este proyecto pequeño
+
+## Para el CD (despliegue):
+
+# Solo si las pruebas pasan:
+# 1. Preparar la app para producción (build)
+# 2. Subir primero a un ambiente de pruebas (staging)
+# 3. Si todo funciona bien ahí, entonces sí a producción
+
+# No estoy 100% seguro de cómo hacer el despliegue automático
+# Creo que Heroku o Vercel serían opciones fáciles para empezar
+
+## Cosas importantes que debo considerar:
+
+# Seguridad:
+# - NUNCA subir passwords o API keys al código
+# - Usar GitHub Secrets para cosas sensibles
+# - Solo dar los permisos mínimos necesarios
+
+# Velocidad:
+# - Que el pipeline no tarde mucho (máximo 5-10 minutos?)
+# - Usar cache para node_modules si es posible
+# - Las pruebas ya son rápidas, así que no debería ser problema
+
+# Calidad:
+# - No permitir merge a main si las pruebas fallan
+# - Sería bueno que alguien revise el código antes del merge
+# - Notificar al equipo si algo se rompe
+
+# Ambientes:
+# - Desarrollo: donde trabajo yo
+# - Staging: para probar antes de producción
+# - Producción: donde están los usuarios reales
+
+## Mi flujo ideal sería:
+# 1. Hago push a mi branch
+# 2. Se ejecutan las pruebas automáticamente
+# 3. Si pasan, puedo hacer Pull Request
+# 4. Después del merge a main, se despliega automático
+# 5. Primero a staging, luego a producción
+
+## Dudas que tengo:
+# - ¿Cómo manejar rollbacks si algo sale mal?
+# - ¿Qué pasa si el servidor de CI se cae?
+# - ¿Debería tener diferentes configuraciones para dev/prod?
+
+## Herramientas que creo que necesito:
+# - GitHub Actions (para CI/CD)
+# - Jest (ya lo tengo configurado)
+# - Heroku o Vercel (para hosting)
+# - ESLint (para calidad de código)
+
+# Nota: Esto es lo que he investigado, pero nunca lo he implementado en la práctica
+# Me gustaría mucho aprender a hacerlo correctamente
