@@ -41,8 +41,8 @@ usersRouter.post('/', (req, res) => {
   }
   
   const rfcClean = req.body.rfc.trim().toUpperCase();
-  // RFC persona física: 4 letras + 6 números + 3 alfanuméricos (ej: PEPA800101XXX)
-  // RFC persona moral: 3 letras + 6 números + 3 alfanuméricos (ej: ABC123456789)
+  // RFC persona física: 4 letras + 6 números + 3 alfanuméricos
+  // RFC persona moral: 3 letras + 6 números + 3 alfanuméricos
   const rfcRegex = /^[A-Z]{3,4}[0-9]{6}[A-Z0-9]{3}$/;
   
   if (!rfcRegex.test(rfcClean)) {
